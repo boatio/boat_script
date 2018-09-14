@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>보트++ 에디터 &#38; 실행기</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/main.css">
+    <script src="src/stdio.js"></script>
+</head>
+<body>
+
+    <div id="editor">
+
+    </div>
+    <ul id="up">
+        <li><a class="active" href="javascript:compiler();void(0);" onclick = "document.getElementById('terminal').style.display='block';document.getElementById('fade').style.display='block'">START</a></li>
+        <li><a >STOP</a></li>
+        <li><a>공유하기</a></li>
+        <li><a>제작자</a></li>
+    </ul>
+    
+    <div id="terminal">
+        <img src="img/delete-button.png" width="50px;" height:"50px;" align="right" href="javascript:void(0)" onclick="document.getElementById('terminal').style.display='none';document.getElementById('fade').style.display='none'"> 
+        <p style="text-align: right;">
+            <select id="seletor" class="seletor" onclick="selectorclick()">
+                    <option value="1">20%</option>
+                    <option value="2" selected="selected">40%</option>
+                    <option value="3">60%</option>
+                    <option value="4">80%</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+        <div id="console">
+
+        </div>
+    </div>
+    <div id="fade" class="black_overlay">
+
+        
+    </div>
+          
+          
+          
+
+
+    <script src="src/core.js"></script>
+    <script src="src/boat.js"></script>
+</body>
+</html>
