@@ -55,13 +55,13 @@ function compiler(){
         }else if(code[i].match("print")){
             if(code[i].match(",line=false")){
                 code[i] = code[i].replace(",line=false","");
-                code[i] = code[i].replace(/print (.*$)/g,'print($1,1);');    
+                code[i] = code[i].replace(/print (.*$)/g,'print($1,1);\n');    
             }else{  
-                code[i] = code[i].replace(/print (.*$)/g,'print($1,0);');  
+                code[i] = code[i].replace(/print (.*$)/g,'print($1,0);\n');  
             }
         }
         else if(code[i].match("end")){
-            code[i] = code[i].replace(/end/g,'}');   
+            code[i] = code[i].replace(/end/g,'\n}');   
         }
         else if(code[i].match("if")){
             code[i] = code[i].replace(/if (.*$)/g,"if($1){");
