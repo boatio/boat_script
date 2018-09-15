@@ -1,9 +1,13 @@
 
+function includeJs(jsFilePath) {
+    var js = document.createElement("script");
+ 
+    js.type = "text/javascript";
+    js.src = jsFilePath;
+ 
+    document.body.appendChild(js);
+}
 
-var Sbigin = []; // "''"
-var Sinbig = []; // '""'
-var Sbig = [];
-var Ssmall = [];
 function startcode(code){
     eval(code);
 }
@@ -34,10 +38,14 @@ function compiler(){
 
         
 
+
     }
     code = code.split("\n");
     for(var i=0;i<code.length;i++){
-        
+        if(code[i].match("import")){
+            code[i] = code[i].replace(/import (.*$)/g,"includeJs( $1 );");
+            console.log(code[i]);
+        }
         if (code[i] == "js::" && state == 0){
             state = 1;
 
@@ -46,7 +54,7 @@ function compiler(){
             state = 0;
         }
         else if(code[i].match("for")){
-            code[i] = code[i].replace(/for (.*$)/,"for($1){");
+            code[i] = code[i].replace(/for (.*$)/g,"for($1){");
             code[i] = code[i].replace("set","var");
             code[i] = code[i].replace(/,/g,";");
         }
